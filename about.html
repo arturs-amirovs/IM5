@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TV Manager</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "styles.css" />
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="scripts.js" type="text/javascript"></script>
+
+</head>
+
+<body class="result-body">
+
+<header>
+    <div class="result-top-line">
+        <ul class="top-navigation">
+            <li><a href="index.html" class="result-home">Home</a></li>
+            <!--<li><a href="shows.html" class="result-home">Shows</a></li>-->
+            <!--<li><a href="" class="result-home">Schedule</a></li>-->
+            <li><a href="about.html" id="result-active">About us</a></li>
+            <li><a href="signin.html" id="result-signIn">Sign in</a></li>
+        </ul>
+
+    </div>
+</header>
+
+
+<div class="about-container">
+    <img alt="TVMAZE API" src="images/tvm_api.png" id="tvmImage" />
+    <h2>If you want to add TV information to your website or app then you've come to the right place!</h2>
+    <br>
+    <p>We are using a free, fast and clean <b>REST API</b> that's easy to use, returns <b><i>JSON</i></b> and conforms to the HATEOAS and HAL principles.
+        <br>The root url is <a id="apiLink" href="http://api.tvmaze.com">http://api.tvmaze.com</a>and the available endpoints are documented below. <br>If
+        you have any questions or suggestions regarding the API, please post them on our forums.</p>
+    <h3>Show search</h3>
+    <p>Search through all the shows in our database by the show's name.
+        A fuzzy algorithm is used (with a fuzziness value of 2), meaning that shows will be found even if your query contains small typos.
+        Results are returned in order of relevancy (best matches on top) and contain each show's full information.</p>
+    <button id="moreInfButton">More information</button>
+    <p id="more-info">The most common usecase for this endpoint is when you're building a local mapping of show names to TVmaze ID's
+        and want to make sure that you're mapping to exactly the right show, and not to a different show that happens to have
+        the same name. By presenting each show's basic information in a UI, you can have the end-user pick a specific entry from
+        that list, and have your application store the chosen show's ID or URL. Any subsequent requests for information on that show
+        can then be directly made to that show's URL.
+
+        <b>URL: /search/shows?q=:query</b>
+        <b>Example: http://api.tvmaze.com/search/shows?q=girls</b></p>
+    <script>
+
+        var show = false;
+        $( document ).ready(function() {
+            $("#more-info").hide();
+            $( "#moreInfButton" ).click(function( event ) {
+                if(show === true) {
+                    $("#more-info").hide();
+                    show = false;
+                } else {
+                    $("#more-info").show();
+                    show = true;
+                }
+            });
+        });
+    </script>
+</div>
+
+</body>
+</html>
