@@ -30,7 +30,7 @@ function searchButton(){
 }
 
 function getData(search) {
-    getJSON('http://api.tvmaze.com/singlesearch/shows?q=' + search,
+    getJSON('https://api.tvmaze.com/singlesearch/shows?q=' + search,
         function (err, data) {
             if (err != null) {
                 alert('Something went wrong: ' + err);
